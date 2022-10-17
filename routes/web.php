@@ -27,6 +27,9 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 Route::get('/login/admin', [AdminController::class, 'AdminLoginForm'])->name('admin.login.form');
-Route::get('/admin/dashboard', [DashboardController::class, 'AdminDashboard'])->name('admin.dashboard');
+Route::post('/admin-login', [AdminController::class, 'AdminLogin'])->name('admin.login');
 
+Route::group(['middleware'=>'admin'],function(){
+    Route::get('/admin/dashboard', [DashboardController::class, 'AdminDashboard'])->name('admin.dashboard');
 
+});
