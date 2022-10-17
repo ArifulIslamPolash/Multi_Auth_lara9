@@ -31,5 +31,6 @@ Route::post('/admin-login', [AdminController::class, 'AdminLogin'])->name('admin
 
 Route::group(['middleware'=>'admin'],function(){
     Route::get('/admin/dashboard', [DashboardController::class, 'AdminDashboard'])->name('admin.dashboard');
+    Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
 
 });
